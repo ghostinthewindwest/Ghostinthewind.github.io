@@ -281,6 +281,30 @@ body {
   z-index: -1;
 }
 
+.end-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 120px 20px;
+}
+
+.end-link img {
+  max-width: 700px; /* adjust size */
+  width: 100%;
+  height: auto;
+
+  mix-blend-mode: overlay; /* key effect */
+  opacity: 0.9;
+
+  cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.end-link img:hover {
+  transform: scale(1.05);
+  opacity: 1;
+}
+
 
 </style>
 </head>
@@ -427,7 +451,7 @@ like country music but I like Jackson West.”</p>
 
     <br><br>
 
-    <img src="images/jacksonwhite.PNG">
+    <img src="images/jacksonwhite.png">
     <img src="images/vinyl.png">
   </div>
 </section>
@@ -569,6 +593,12 @@ window.addEventListener("scroll", () => {
   overlay.style.transform = `translateY(${scrollY * speed}px)`;
 });
 </script>
+
+<div class="end-link">
+  <a href="https://linktr.ee/jacksonwestmusic?utm_source=linktree_profile_share&ltsid=fa7575c9-7ee2-4a1d-a422-9fada8550aa6" target="_blank">
+    <img src="images/final.png" alt="Final link image">
+  </a>
+</div>
 
 </body>
 </html>
