@@ -40,10 +40,10 @@ color: black;
 
   /* FULL WIDTH IMAGE */
   .full-image img {
-    width: 100%;
-    height: 100vh;
-    object-fit: cover;
-  }
+  width: 100%;
+  height: auto;   /* keeps proportions */
+  object-fit: contain;
+}
 
   /* TWO IMAGES + CENTER VIDEO */
   .three-column {
@@ -257,63 +257,6 @@ margin: 0 auto 20px auto; /* centers block */
   transition: transform 0.1s linear;
 }
 
- @media (max-width: 768px) {
-
-  /* BACKGROUND FIX */
-  body {
-    background-attachment: scroll; /* disable fixed (important) */
-    background-position: center top;
-    background-size: cover;
-  }
-
-  /* OVERLAY FIX */
-  .bg-overlay {
-    position: absolute; /* fixed breaks on mobile */
-    height: 100%;
-    opacity: 0.5; /* ensure visibility */
-  }
-
-  /* FULL SCREEN IMAGE FIX */
-  .full-image img {
-    height: auto;        /* prevents compression */
-    max-height: 80vh;    /* keeps it large but not broken */
-  }
-
-  /* STACK LAYOUT (important) */
-  .three-column {
-    flex-direction: column;
-  }
-
-  .three-column img,
-  .three-column video {
-    width: 100%;
-  }
-
-  /* VIDEO GRID → single column */
-  .video-grid {
-    grid-template-columns: 1fr;
-  }
-
-  /* AUDIO GRID → single column */
-  .audio-grid {
-    grid-template-columns: 1fr;
-  }
-
-  /* TYPOGRAPHY SCALE */
-  .main-title {
-    font-size: 2rem;
-  }
-
-  .subtitle {
-    font-size: 0.9rem;
-  }
-
-  /* SPACING ADJUST */
-  .roles {
-    margin-top: 100px;
-  }
-}
-
 
 /* ensure stacking works */
 body {
@@ -329,7 +272,7 @@ body {
   width: 100%;
   height: 120%; /* extra height for movement */
   
-  background: url("images/horses.png") center / cover no-repeat;
+  background: url("images/horses.png") center / contain no-repeat;
 
   pointer-events: none; /* allows clicks through */
   z-index: -1; /* stays behind content */
@@ -343,10 +286,7 @@ body {
 
 <body>
 
-<div class="bg"></div>
 <div class="bg-overlay"></div>
-
-
 
 <!-- SECTION 1: INTRO -->
 <section>
@@ -354,7 +294,7 @@ body {
   <div class="intro-content">
 
     <h1 class="main-title">JACKSON WEST</h1>
-    <h2 class="subtitle">GHOST IN THE WIND; CASE STUDY</h2>
+    <h2 class="subtitle">GHOST IN THE WIND; ALBUM OVERVIEW</h2>
 
    <div class="roles">
 
@@ -442,7 +382,7 @@ like country music but I like Jackson West.”</p>
 </div>
 
 <div class="audio-player">
-  <audio src="audio/2.wav"></audio>
+  <audio src="audio/2.m4a"></audio>
 
   <div class="controls">
     <button class="play-btn" onclick="togglePlay(this)">▶</button>
@@ -486,7 +426,7 @@ like country music but I like Jackson West.”</p>
 
     <br><br>
 
-    <img src="images/jacksonwhite.PNG">
+    <img src="images/jacksonwhite.png">
     <img src="images/vinyl.png">
   </div>
 </section>
