@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Page</title>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Raleway, sans-serif;
+color: black;
+  }
+
+  body {
+    background: url("images/background.png") no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+  }
+
+  section {
+    padding: 60px 20px;
+    text-align: center;
+  }
+
+  .container {
+    max-width: 1000px;
+    margin: auto;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* FULL WIDTH IMAGE */
+  .full-image img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+  }
+
+  /* TWO IMAGES + CENTER VIDEO */
+  .three-column {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .three-column img,
+  .three-column video {
+    width: 30%;
+  }
+
+  video {
+    cursor: pointer;
+  }
+
+ .audio-player {
+  background: transparent; /* removed grey box */
+  padding: 0;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* PLAY BUTTON */
+.play-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* PROGRESS BAR (container) */
+.progress-bar {
+  flex: 1;
+  height: 6px;
+  background: rgba(0,0,0,0.2); /* subtle track */
+  cursor: pointer;
+  position: relative;
+}
+
+/* PROGRESS FILL */
+.progress {
+  height: 100%;
+  width: 0%;
+  background: black;
+  transition: width 0.1s linear;
+}
+
+/* TITLE */
+.media-title {
+  margin-top: 6px;
+  font-size: 0.75rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+  opacity: 0.8;
+}
+
+  /* FOUR VIDEOS CORNERS */
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  .video-grid video {
+    width: 100%;
+    aspect-ratio: 9/16;
+    object-fit: cover;
+  }
+
+  /* FINAL SECTION */
+  .final > p {
+  margin-bottom: 20px;
+  max-width: 700px;
+margin: 0 auto 20px auto; /* centers block */
+  text-align: center;
+}
+
+.final .audio-player {
+  margin: 40px 0;
+}
+
+.final img {
+  margin-top: 40px;
+  max-width: 600px; /* optional, keeps it elegant */
+}
+
+.intro {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px;
+}
+
+.intro-content {
+  max-width: 700px;
+}
+
+.main-title {
+  font-size: 3rem;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+.subtitle {
+  font-size: 1rem;
+  margin-top: 10px;
+  letter-spacing: 2px;
+  font-weight: 300;
+}
+
+.roles {
+  margin-top: 40px;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  line-height: 1.8;
+}
+
+.logos {
+  margin-top: 40px;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+}
+
+.year {
+  margin-top: 30px;
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+.logos {
+  display: flex;
+  flex-direction: column; /* stack top to bottom */
+  align-items: center;
+  gap: 15px;
+}
+
+.logos img {
+  height: 40px;      /* control size */
+  width: auto;
+  object-fit: contain;
+  opacity: 0.9;      /* optional, softer look */
+}
+
+.roles {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+}
+
+.role-title {
+  font-weight: 600;       /* bold */
+  letter-spacing: 2px;
+  font-size: 0.9rem;
+}
+
+.role-names {
+  font-weight: 300;       /* lighter */
+  font-size: 0.85rem;
+  opacity: 0.8;
+  margin-top: 5px;
+}
+
+.roles {
+  margin-top: 200px;
+}
+
+.media-title {
+  margin-top: 8px;
+  font-size: 0.8rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+  opacity: 0.8;
+}
+
+.container h2 {
+  margin-bottom: 60px;
+}
+
+.parallax {
+  width: 30%;
+  overflow: hidden;
+  position: relative;
+}
+
+.parallax img {
+  width: 100%;
+  height: 120%; /* slightly larger so movement doesn’t reveal edges */
+  object-fit: cover;
+  transform: translateY(0);
+  transition: transform 0.1s linear;
+}
+
+.video-item {
+  overflow: hidden;
+  position: relative;
+}
+
+.video-item video {
+  width: 100%;
+  transform: translateY(0);
+  transition: transform 0.1s linear;
+}
+
+
+/* ensure stacking works */
+body {
+  position: relative;
+  z-index: 0;
+}
+
+/* OVERLAY LAYER */
+.bg-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%; /* extra height for movement */
+  
+  background: url("images/horses.png") center / cover no-repeat;
+
+  pointer-events: none; /* allows clicks through */
+  z-index: -1; /* stays behind content */
+  
+  transform: translateY(0);
+}
+
+
+</style>
+</head>
+
+<body>
+
+<div class="bg-overlay"></div>
+
+<!-- SECTION 1: INTRO -->
+<section>
+ <section class="intro">
+  <div class="intro-content">
+
+    <h1 class="main-title">JACKSON WEST</h1>
+    <h2 class="subtitle">GHOST IN THE WIND; CASE STUDY</h2>
+
+   <div class="roles">
+
+  <div class="role">
+    <p class="role-title">CREATIVE DIRECTION</p>
+    <p class="role-names">COBIAN STUDIOS</p>
+  </div>
+
+  <div class="role">
+    <p class="role-title">PROJECT DEVELOPMENT</p>
+    <p class="role-names">TINY BOMB</p>
+  </div>
+
+  <div class="role">
+    <p class="role-title">BRAND DESIGN</p>
+    <p class="role-names">COBIAN STUDIOS</p>
+  </div>
+
+</div>
+
+<p class="year">CC 2026</p>
+
+<div class="logos">
+  <img src="images/bombicon.png" style="height:30px;">
+  <img src="images/bomb.png" style="height:100px;">
+ 
+
+    
+
+  </div>
+</section>
+
+<!-- FULL PAGE IMAGE -->
+<section class="full-image">
+  <img src="images/hero.jpg">
+</section>
+
+<!-- PROJECT OVERVIEW -->
+<section>
+  <div class="container">
+    <h2>PROJECT OVERVIEW</h2>
+    <p>The album is to be story and lyric driven taking you on a ride through my life; longing, loneliness,
+adventure, humility, & lessons learned. The songs are to balance timelessness while also being
+undeniably Jackson. The songs should be good yesterday, today, & tomorrow because of the
+classic instrumentation and relatable stories.
+The genre is country but not alike to much mainstream country. Someone could easily say “I don’t
+like country music but I like Jackson West.”</p>
+  </div>
+</section>
+
+<!-- TWO IMAGES + CENTER VIDEO -->
+<section>
+ <div class="container three-column">
+  
+  <div class="parallax">
+    <img src="images/left.jpg">
+  </div>
+
+  <video src="video/1.mov" controls></video>
+
+  <div class="parallax">
+    <img src="images/right.jpg">
+  </div>
+
+</div>
+</section>
+
+<!-- AUDIO + TWO IMAGES -->
+<section>
+  <div class="container">
+    <div class="audio-grid">
+
+    <div class="audio-player">
+  <audio src="audio/1.m4a"></audio>
+
+  <div class="controls">
+    <button class="play-btn" onclick="togglePlay(this)">▶</button>
+
+    <div class="progress-bar" onclick="seek(event, this)">
+      <div class="progress"></div>
+    </div>
+  </div>
+
+  <p class="media-title">FLY JACKIE TO ST. LOUIS</p>
+</div>
+
+<div class="audio-player">
+  <audio src="audio/2.wav"></audio>
+
+  <div class="controls">
+    <button class="play-btn" onclick="togglePlay(this)">▶</button>
+
+    <div class="progress-bar" onclick="seek(event, this)">
+      <div class="progress"></div>
+    </div>
+  </div>
+
+  <p class="media-title">LOOK AT ALL THE FLOWERS</p>
+</div>
+
+<div class="audio-player">
+  <audio src="audio/3.m4a"></audio>
+
+  <div class="controls">
+    <button class="play-btn" onclick="togglePlay(this)">▶</button>
+
+    <div class="progress-bar" onclick="seek(event, this)">
+      <div class="progress"></div>
+    </div>
+  </div>
+
+  <p class="media-title">NEW MEXICO</p>
+</div>
+
+<div class="audio-player">
+  <audio src="audio/4.m4a"></audio>
+
+  <div class="controls">
+    <button class="play-btn" onclick="togglePlay(this)">▶</button>
+
+    <div class="progress-bar" onclick="seek(event, this)">
+      <div class="progress"></div>
+    </div>
+  </div>
+
+  <p class="media-title">TALKING TO THE WALLS</p>
+</div>
+    </div>
+
+    <br><br>
+
+    <img src="images/jacksonwhite.png">
+    <img src="images/vinyl.png">
+  </div>
+</section>
+
+<!-- FOUR VIDEOS -->
+<section>
+ <div class="container video-grid">
+
+  <div class="video-item slow">
+    <video src="video/2.mov" controls></video>
+  </div>
+
+  <div class="video-item fast">
+    <video src="video/3.mov" controls></video>
+  </div>
+
+  <div class="video-item slow">
+    <video src="video/4.mov" controls></video>
+  </div>
+
+  <div class="video-item fast">
+    <video src="video/5.mov" controls></video>
+  </div>
+
+</div>
+</section>
+
+<!-- FINAL SECTION -->
+<section>
+  <div class="container final">
+    <p>This project ultimately exists as a reflection on movement—through places, through time, and through self. Each piece contributes to a broader narrative shaped by memory, distance, and the quiet persistence of feeling. Rather than seeking resolution, the work embraces the ongoing nature of these experiences, allowing them to remain fluid and unresolved. In doing so, it holds space for both the personal and the universal, where stories are not fixed, but continuously unfolding.</p>
+    
+<div class="audio-player">
+  <audio src="audio/voicemail.m4a"></audio>
+
+  <div class="controls">
+    <button class="play-btn" onclick="togglePlay(this)">▶</button>
+
+    <div class="progress-bar" onclick="seek(event, this)">
+      <div class="progress"></div>
+    </div>
+  </div>
+
+  <p class="media-title">A MESSAGE FROM DREW JONES</p>
+</div>
+    </div>
+
+    <img src="images/album.jpeg">
+  </div>
+</section>
+
+
+<script>
+function togglePlay(button) {
+  const player = button.closest(".audio-player");
+  const audio = player.querySelector("audio");
+  const progress = player.querySelector(".progress");
+
+  // stop all others safely
+  document.querySelectorAll(".audio-player").forEach(p => {
+    const a = p.querySelector("audio");
+    const btn = p.querySelector(".play-btn");
+    const prog = p.querySelector(".progress");
+
+    if (a !== audio) {
+      a.pause();
+      a.currentTime = 0;
+      if (btn) btn.textContent = "▶";
+      if (prog) prog.style.width = "0%";
+    }
+  });
+
+  if (audio.paused) {
+    audio.play().catch(() => {}); // prevents silent failure
+    button.textContent = "⏹";
+  } else {
+    audio.pause();
+    audio.currentTime = 0;
+    button.textContent = "▶";
+    progress.style.width = "0%";
+  }
+
+  audio.ontimeupdate = () => {
+    if (audio.duration) {
+      const percent = (audio.currentTime / audio.duration) * 100;
+      progress.style.width = percent + "%";
+    }
+  };
+
+  audio.onended = () => {
+    button.textContent = "▶";
+    progress.style.width = "0%";
+  };
+}
+
+function seek(e, bar) {
+  const player = bar.closest(".audio-player");
+  const audio = player.querySelector("audio");
+
+  const rect = bar.getBoundingClientRect();
+  const percent = (e.clientX - rect.left) / rect.width;
+
+  if (audio.duration) {
+    audio.currentTime = percent * audio.duration;
+  }
+}
+</script>
+
+<script>
+window.addEventListener("scroll", () => {
+  document.querySelectorAll(".parallax img").forEach(img => {
+    const rect = img.getBoundingClientRect();
+    const speed = 0.2; // lower = subtler
+
+    const offset = rect.top * speed;
+    img.style.transform = `translateY(${offset}px)`;
+  });
+});
+</script>
+
+<script>
+window.addEventListener("scroll", () => {
+  document.querySelectorAll(".video-item").forEach(item => {
+    const video = item.querySelector("video");
+    const rect = item.getBoundingClientRect();
+
+    let speed = item.classList.contains("slow") ? 0.1 : 0.25;
+
+    const offset = rect.top * speed;
+    video.style.transform = `translateY(${offset}px)`;
+  });
+});
+</script>
+
+<script>
+window.addEventListener("scroll", () => {
+  const overlay = document.querySelector(".bg-overlay");
+
+  const scrollY = window.scrollY;
+
+  const speed = 0.05; // lower = slower movement
+
+  overlay.style.transform = `translateY(${scrollY * speed}px)`;
+});
+</script>
+
+</body>
+</html>
