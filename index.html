@@ -257,6 +257,63 @@ margin: 0 auto 20px auto; /* centers block */
   transition: transform 0.1s linear;
 }
 
+ @media (max-width: 768px) {
+
+  /* BACKGROUND FIX */
+  body {
+    background-attachment: scroll; /* disable fixed (important) */
+    background-position: center top;
+    background-size: cover;
+  }
+
+  /* OVERLAY FIX */
+  .bg-overlay {
+    position: absolute; /* fixed breaks on mobile */
+    height: 100%;
+    opacity: 0.5; /* ensure visibility */
+  }
+
+  /* FULL SCREEN IMAGE FIX */
+  .full-image img {
+    height: auto;        /* prevents compression */
+    max-height: 80vh;    /* keeps it large but not broken */
+  }
+
+  /* STACK LAYOUT (important) */
+  .three-column {
+    flex-direction: column;
+  }
+
+  .three-column img,
+  .three-column video {
+    width: 100%;
+  }
+
+  /* VIDEO GRID → single column */
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* AUDIO GRID → single column */
+  .audio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* TYPOGRAPHY SCALE */
+  .main-title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  /* SPACING ADJUST */
+  .roles {
+    margin-top: 100px;
+  }
+}
+
 
 /* ensure stacking works */
 body {
