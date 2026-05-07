@@ -137,88 +137,7 @@ margin: 0 auto 20px auto; /* centers block */
   max-width: 600px; /* optional, keeps it elegant */
 }
 
-.intro {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 40px;
-}
 
-.intro-content {
-  max-width: 700px;
-}
-
-.main-title {
-  font-size: 3rem;
-  letter-spacing: 2px;
-  font-weight: 600;
-}
-
-.subtitle {
-  font-size: 1rem;
-  margin-top: 10px;
-  letter-spacing: 2px;
-  font-weight: 300;
-}
-
-.roles {
-  margin-top: 40px;
-  font-size: 0.9rem;
-  letter-spacing: 2px;
-  line-height: 1.8;
-}
-
-.logos {
-  margin-top: 40px;
-  font-size: 0.9rem;
-  letter-spacing: 2px;
-}
-
-.year {
-  margin-top: 30px;
-  font-size: 0.8rem;
-  opacity: 0.7;
-}
-.logos {
-  display: flex;
-  flex-direction: column; /* stack top to bottom */
-  align-items: center;
-  gap: 15px;
-}
-
-.logos img {
-  height: 40px;      /* control size */
-  width: auto;
-  object-fit: contain;
-  opacity: 0.9;      /* optional, softer look */
-}
-
-.roles {
-  margin-top: 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  text-align: center;
-}
-
-.role-title {
-  font-weight: 600;       /* bold */
-  letter-spacing: 2px;
-  font-size: 0.9rem;
-}
-
-.role-names {
-  font-weight: 300;       /* lighter */
-  font-size: 0.85rem;
-  opacity: 0.8;
-  margin-top: 5px;
-}
-
-.roles {
-  margin-top: 200px;
-}
 
 .media-title {
   margin-top: 8px;
@@ -281,30 +200,150 @@ body {
   z-index: -1;
 }
 
-.end-link {
+/* FINAL LINKS */
+
+.end-links {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: clamp(20px, 3vw, 50px);
+
   padding: 120px 20px;
 }
 
-.end-link img {
-  max-width: 700px; /* adjust size */
-  width: 100%;
-  height: auto;
-
-  mix-blend-mode: overlay; /* key effect */
-  opacity: 0.9;
-
-  cursor: pointer;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+.end-links a {
+  display: block;
 }
 
-.end-link img:hover {
-  transform: scale(1.05);
+.end-links img {
+  width: clamp(24px, 4vw, 50px);
+  height: auto;
+
+  mix-blend-mode: overlay;
+
+  opacity: 0.9;
+
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.end-links img:hover {
+  transform: scale(1.08);
   opacity: 1;
 }
 
+/* HERO IMAGE */
+.hero-image {
+  padding: 0;
+}
+
+.hero-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+.overview-title {
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 50px;
+}
+
+/* AUDIO SECTION */
+
+.audio-section {
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* ENTIRE COMPOSITION */
+.audio-composition {
+  position: relative;
+
+  width: 100vw;
+
+  margin-left: calc(50% - 50vw);
+}
+
+/* BACKGROUND IMAGE */
+.audio-background {
+  width: 100%;
+  height: auto;
+
+  display: block;
+}
+
+/* AUDIO COLUMN POSITIONED OVER IMAGE */
+.audio-grid {
+  position: absolute;
+
+  top: 50%;
+  left: 6%;
+
+  transform: translateY(-50%);
+
+  width: 30%;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: clamp(14px, 2vw, 35px);
+
+  text-align: left;
+}
+
+/* AUDIO UI */
+.audio-section .play-btn,
+.audio-section .media-title {
+  color: white;
+}
+
+/* BUTTON */
+.play-btn {
+  font-size: clamp(12px, 1vw, 18px);
+}
+
+
+/* TIMELINE */
+.progress-bar {
+  height: clamp(3px, 0.4vw, 6px);
+
+  background: rgba(255,255,255,0.25);
+}
+
+.progress {
+  background: white;
+}
+
+/* CONTROL SPACING */
+.controls {
+  gap: 1vw;
+}
+
+/* AUDIO SECTION RESPONSIVE TYPE */
+
+.audio-section .media-title {
+  font-size: clamp(8px, 0.9vw, 16px);
+  letter-spacing: 0.08em;
+}
+
+.audio-section .play-btn {
+  font-size: clamp(10px, 1vw, 20px);
+}
+
+.audio-section .controls {
+  gap: clamp(6px, 1vw, 16px);
+}
+
+.audio-section .progress-bar {
+  height: clamp(2px, 0.35vw, 6px);
+}
 
 </style>
 </head>
@@ -313,54 +352,17 @@ body {
 
 <div class="bg-overlay"></div>
 
-<!-- SECTION 1: INTRO -->
-<section>
- <section class="intro">
-  <div class="intro-content">
-
-    <h1 class="main-title">JACKSON WEST</h1>
-    <h2 class="subtitle">GHOST IN THE WIND; ALBUM OVERVIEW</h2>
-
-   <div class="roles">
-
-  <div class="role">
-    <p class="role-title">CREATIVE DIRECTION</p>
-    <p class="role-names">COBIAN STUDIOS</p>
-  </div>
-
-  <div class="role">
-    <p class="role-title">PROJECT DEVELOPMENT</p>
-    <p class="role-names">TINY BOMB</p>
-  </div>
-
-  <div class="role">
-    <p class="role-title">BRAND DESIGN</p>
-    <p class="role-names">COBIAN STUDIOS</p>
-  </div>
-
-</div>
-
-<p class="year">CC 2026</p>
-
-<div class="logos">
-  <img src="images/bombicon.png" style="height:30px;">
-  <img src="images/bomb.png" style="height:100px;">
- 
-
-    
-
-  </div>
+<!-- HERO IMAGE -->
+<section class="hero-image">
+  <img src="images/landing.png">
 </section>
 
-<!-- FULL PAGE IMAGE -->
-<section class="full-image">
-  <img src="images/hero.jpg">
-</section>
+
 
 <!-- PROJECT OVERVIEW -->
 <section>
   <div class="container">
-    <h2>PROJECT OVERVIEW</h2>
+    <img src="images/header.png" class="overview-title">
     <p>The album is to be story and lyric driven taking you on a ride through my life; longing, loneliness,
 adventure, humility, & lessons learned. The songs are to balance timelessness while also being
 undeniably Jackson. The songs should be good yesterday, today, & tomorrow because of the
@@ -387,74 +389,84 @@ like country music but I like Jackson West.”</p>
 </div>
 </section>
 
-<!-- AUDIO + TWO IMAGES -->
-<section>
-  <div class="container">
-    <div class="audio-grid">
 
-    <div class="audio-player">
-  <audio src="audio/1.m4a"></audio>
+<!-- AUDIO OVER IMAGE -->
+<section class="audio-section">
 
-  <div class="controls">
-    <button class="play-btn" onclick="togglePlay(this)">▶</button>
+ 
 
-    <div class="progress-bar" onclick="seek(event, this)">
-      <div class="progress"></div>
-    </div>
+    <div class="audio-composition">
+
+      <!-- BACKGROUND -->
+      <img src="images/songs.png" class="audio-background">
+
+      <!-- AUDIO COLUMN -->
+      <div class="audio-grid">
+
+        <div class="audio-player">
+          <audio src="audio/1.m4a"></audio>
+
+          <div class="controls">
+            <button class="play-btn" onclick="togglePlay(this)">▶</button>
+
+            <div class="progress-bar" onclick="seek(event, this)">
+              <div class="progress"></div>
+            </div>
+          </div>
+
+          <p class="media-title">FLY JACKIE TO ST. LOUIS</p>
+        </div>
+
+        <div class="audio-player">
+          <audio src="audio/2.m4a"></audio>
+
+          <div class="controls">
+            <button class="play-btn" onclick="togglePlay(this)">▶</button>
+
+            <div class="progress-bar" onclick="seek(event, this)">
+              <div class="progress"></div>
+            </div>
+          </div>
+
+          <p class="media-title">LOOK AT ALL THE FLOWERS</p>
+        </div>
+
+        <div class="audio-player">
+          <audio src="audio/3.m4a"></audio>
+
+          <div class="controls">
+            <button class="play-btn" onclick="togglePlay(this)">▶</button>
+
+            <div class="progress-bar" onclick="seek(event, this)">
+              <div class="progress"></div>
+            </div>
+          </div>
+
+          <p class="media-title">NEW MEXICO</p>
+        </div>
+
+        <div class="audio-player">
+          <audio src="audio/4.m4a"></audio>
+
+          <div class="controls">
+            <button class="play-btn" onclick="togglePlay(this)">▶</button>
+
+            <div class="progress-bar" onclick="seek(event, this)">
+              <div class="progress"></div>
+            </div>
+          </div>
+
+          <p class="media-title">TALKING TO THE WALLS</p>
+        </div>
+
+      </div>
+
+   
+
   </div>
 
-  <p class="media-title">FLY JACKIE TO ST. LOUIS</p>
-</div>
-
-<div class="audio-player">
-  <audio src="audio/2.m4a"></audio>
-
-  <div class="controls">
-    <button class="play-btn" onclick="togglePlay(this)">▶</button>
-
-    <div class="progress-bar" onclick="seek(event, this)">
-      <div class="progress"></div>
-    </div>
-  </div>
-
-  <p class="media-title">LOOK AT ALL THE FLOWERS</p>
-</div>
-
-<div class="audio-player">
-  <audio src="audio/3.m4a"></audio>
-
-  <div class="controls">
-    <button class="play-btn" onclick="togglePlay(this)">▶</button>
-
-    <div class="progress-bar" onclick="seek(event, this)">
-      <div class="progress"></div>
-    </div>
-  </div>
-
-  <p class="media-title">NEW MEXICO</p>
-</div>
-
-<div class="audio-player">
-  <audio src="audio/4.m4a"></audio>
-
-  <div class="controls">
-    <button class="play-btn" onclick="togglePlay(this)">▶</button>
-
-    <div class="progress-bar" onclick="seek(event, this)">
-      <div class="progress"></div>
-    </div>
-  </div>
-
-  <p class="media-title">TALKING TO THE WALLS</p>
-</div>
-    </div>
-
-    <br><br>
-
-    <img src="images/jacksonwhite.PNG">
-    <img src="images/vinyl.png">
-  </div>
 </section>
+
 
 <!-- FOUR VIDEOS -->
 <section>
@@ -594,10 +606,32 @@ window.addEventListener("scroll", () => {
 });
 </script>
 
-<div class="end-link">
-  <a href="https://linktr.ee/jacksonwestmusic?utm_source=linktree_profile_share&ltsid=fa7575c9-7ee2-4a1d-a422-9fada8550aa6" target="_blank">
-    <img src="images/final.png" alt="Final link image">
+<div class="end-links">
+
+  <a href="https://drop.cobrand.com/d/JacksonWest/signup" target="_blank">
+    <img src="images/icon1.png" alt="">
   </a>
+
+  <a href="https://www.instagram.com/jacksonwest.music" target="_blank">
+    <img src="images/icon2.png" alt="">
+  </a>
+
+  <a href="https://www.facebook.com/profile.php?id=61567500263697&mibextid=wwXIfr&rdid=22MACNJG1iDke4lB&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F18SodkRAu7%2F%3Fmibextid%3DwwXIfr#" target="_blank">
+    <img src="images/icon3.png" alt="">
+  </a>
+
+  <a href="https://open.spotify.com/user/31dpgrt2mcbidefjwoasowh7dzla?si=xMFY_FvSRgG2PLozlP5bAg&nd=1&dlsi=9adac006e86c406e" target="_blank">
+    <img src="images/icon4.png" alt="">
+  </a>
+
+  <a href="https://www.youtube.com/@jacksonwestmusic?si=ls82HaMj_E0FNAkY" target="_blank">
+    <img src="images/icon5.png" alt="">
+  </a>
+
+  <a href="https://www.youtube.com/@jacksonwestmusic?si=ls82HaMj_E0FNAkY" target=" target="_blank">
+    <img src="images/icon6.png" alt="">
+  </a>
+
 </div>
 
 </body>
